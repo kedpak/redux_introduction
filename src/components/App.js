@@ -13,17 +13,31 @@ class App extends Component {
   }
 
   userUpdate = (field, event) => {
-    console.log(field + ': is ' + event.target.value);
+    if (field === 'username') {
+      this.setState({
+        username: event.target.value
+      })
+      return;
+    }
+    if (field === 'password'){
+      this.setState({
+        password: event.target.value
+      })
+      return;
+    }
   }
 
-  pss
+  addUser = (event) => {
+    console.log('ADD USER: ' + this.state.username);
+    console.log('ADD USER: ' + this.state.password);
+  }
 
   render() {
     return (
       <div className="App">
         <input onChange={this.userUpdate.bind(this, 'username')} type="text" placeholder="username"/><br />
         <input onChange={this.userUpdate.bind(this, 'password')} type="password" placeholder="password"/><br />
-        <button>Add User</button>
+        <button onClick={this.addUser}>Add User</button>
       </div>
     );
   }
