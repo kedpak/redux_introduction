@@ -12,6 +12,7 @@ class App extends Component {
     }
   }
 
+  /* method sets the state of inputed fields */
   userUpdate = (field, event) => {
     if (field === 'username') {
       this.setState({
@@ -27,6 +28,7 @@ class App extends Component {
     }
   }
 
+  /* adds user and calls property of createUser */
   addUser = (event) => {
     const users = {
       username: this.state.username,
@@ -53,6 +55,9 @@ class App extends Component {
   }
 }
 
+/* this method references the reducers
+  return result of reducers become property of this module
+*/
 const stateToProps = (state) => {
   return {
     user: state.user,    /* this is reference to userReducer */
@@ -60,6 +65,7 @@ const stateToProps = (state) => {
   }
 }
 
+/* this method references the actions */
 const dispatchToProps = (dispatch) => {
   return {
     createUser: (user) => dispatch(actions.createUser(user))
