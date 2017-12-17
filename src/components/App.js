@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import {connect} from 'react-redux';
-
+import { connect } from 'react-redux';
+import actions from '../actions/userAction'
 
 class App extends Component {
   constructor() {
@@ -28,8 +28,13 @@ class App extends Component {
   }
 
   addUser = (event) => {
-    console.log('ADD USER: ' + this.state.username);
-    console.log('ADD USER: ' + this.state.password);
+    const users = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
+    console.log(JSON.stringify(users));
+    this.props.createUser(users);
   }
 
   render() {
@@ -43,4 +48,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const stateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const dispatchToProps = (dispatch) => {
+  return {
+    createUser: (user) => dispatch(actions.createUser(user))
+  }
+}
+
+export default connect(stateToProps, dispatchToProps)(App);
