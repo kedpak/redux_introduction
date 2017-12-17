@@ -32,17 +32,21 @@ class App extends Component {
       username: this.state.username,
       password: this.state.password
     }
-
-    console.log(JSON.stringify(users));
     this.props.createUser(users);
   }
 
   render() {
+    console.log('MAGIC STICK ' + this.props.user.allUsers)
+    console.log('MAGIC STICK ' + this.props.user.allMovies)
     return (
       <div className="App">
         <input onChange={this.userUpdate.bind(this, 'username')} type="text" placeholder="username"/><br />
         <input onChange={this.userUpdate.bind(this, 'password')} type="password" placeholder="password"/><br />
         <button onClick={this.addUser}>Add User</button>
+        <h3>Users Added</h3>
+        <ol>
+
+        </ol>
       </div>
     );
   }
@@ -50,7 +54,8 @@ class App extends Component {
 
 const stateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,    /* this is reference to userReducer */
+    movie: state.movie
   }
 }
 
