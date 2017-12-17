@@ -36,8 +36,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('MAGIC STICK ' + this.props.user.allUsers)
-    console.log('MAGIC STICK ' + this.props.user.allMovies)
     return (
       <div className="App">
         <input onChange={this.userUpdate.bind(this, 'username')} type="text" placeholder="username"/><br />
