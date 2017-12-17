@@ -45,7 +45,10 @@ class App extends Component {
         <button onClick={this.addUser}>Add User</button>
         <h3>Users Added</h3>
         <ol>
-
+          {this.props.user.allUsers.map((users) => {
+            return <li key={users.username}>{users.username}</li>
+          })
+        }
         </ol>
       </div>
     );
